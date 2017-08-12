@@ -1,0 +1,34 @@
+.header {
+    color: #ee6e73;
+    font-weight: 300;
+}
+
+.logo {
+    color: #ee6e73;
+    font-weight: bold;
+    font-family: fantasy;
+    line-height: 60%;
+    padding-top: 15px;
+}
+
+.pageHeader {
+    color: #FFF;
+    background: #ee6e73;
+    margin: 0px;
+    padding: 26px 0px;
+    font-size: 3.56rem;
+    line-height: 110%;
+}
+
+.container{
+    width: 85%!important;
+}
+
+.page-main{
+    padding-left: 300px;
+}
+@media only screen and (max-width: 992px) {
+    .page-main{
+        padding-left: 0px;
+    }
+}
