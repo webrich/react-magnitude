@@ -1,8 +1,8 @@
 import React from "react";
-import ReactDOM from "react-dom";
+
 import Node from "./Node";
 import PropTypes from "prop-types";
-import cn from "classNames";
+import cn from "classnames";
 
 class SideNav extends React.Component {
     constructor(props) {
@@ -46,6 +46,7 @@ class SideNav extends React.Component {
 }
 
 SideNav.propTypes = {
+    className: PropTypes.string,
     menuWidth: PropTypes.number,
     id: PropTypes.string,
     edge: PropTypes.oneOf(["left", "right"]),

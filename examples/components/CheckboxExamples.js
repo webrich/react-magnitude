@@ -1,6 +1,6 @@
 import React from "react";
 import Example from "./Example";
-import { Container, Row, Column, Section, Heading, Checkbox } from "react-magnitude";
+import { Row, Section, Heading, Checkbox } from "react-magnitude";
 
 export default () =>
     <Example title="Forms">
@@ -12,7 +12,7 @@ export default () =>
                 <Checkbox id="test1" label="Red" />
                 <Checkbox id="test2" label="Yellow" checked />
                 <Checkbox id="test3" label="Filled In" filled />
-                <Checkbox id="test4" label="Green" checked="checked" disabled />
+                <Checkbox id="test4" label="Green" checked disabled />
                 <Checkbox id="test5" label="Brown" disabled />
             </form>
         </Section>

@@ -1,6 +1,5 @@
 import React from "react";
 import Node from "./Node";
-import ReactDOM from "react-dom";
 import PropTypes from "prop-types";
 
 class Tags extends React.Component {
@@ -31,7 +30,7 @@ class Tags extends React.Component {
                 limit
             }
         };
-        React.Children.forEach(props.children, (child, index) => {
+        React.Children.forEach(props.children, child => {
             this.options.data.push({
                 tag: child.props.children,
                 image: child.props.src,
@@ -42,13 +41,13 @@ class Tags extends React.Component {
     }
 
     render() {
-        return <Node ref="el" className="chips" />;
+        return <Node ref={ref => (this.tags = ref)} className="chips" />;
     }
 
     componentDidMount() {
         $(document).ready(() => {
             if (typeof $ !== "undefined" && $.fn.material_chip) {
-                let $el = $(ReactDOM.findDOMNode(this.refs.el));
+                let $el = $(this.tags.el);
                 $el.material_chip(this.options);
                 $el.on("chip.add", this.onAdd);
                 $el.on("chip.delete", this.onRemove);
@@ -59,6 +58,7 @@ class Tags extends React.Component {
 }
 
 Tags.propTypes = {
+    children: PropTypes.node,
     placeholder: PropTypes.string,
     secondaryPlaceholder: PropTypes.string,
     data: PropTypes.object,

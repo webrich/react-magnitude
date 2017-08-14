@@ -1,33 +1,35 @@
-const webpack = require('webpack');
-const path = require('path');
+const webpack = require("webpack");
+const path = require("path");
 
 const ROOT_PATH = path.resolve(__dirname);
-const EXAMPLES_PATH = path.resolve(ROOT_PATH, '../examples');
-const SRC_PATH = path.resolve(ROOT_PATH, '../src');
-const OUTPUT_PATH = path.resolve(ROOT_PATH, '../dist');
+const EXAMPLES_PATH = path.resolve(ROOT_PATH, "../examples");
+const SRC_PATH = path.resolve(ROOT_PATH, "../src");
+const OUTPUT_PATH = path.resolve(ROOT_PATH, "../dist");
 const PORT = 3000;
 
 module.exports = {
     entry: {
-        'react-magnitude': path.resolve(SRC_PATH, 'index.js'),
-        'react-magnitude-examples': path.resolve(EXAMPLES_PATH, 'index.js'),
+        "react-magnitude": path.resolve(SRC_PATH, "index.js"),
+        "react-magnitude-examples": path.resolve(EXAMPLES_PATH, "index.js")
     },
     output: {
         path: OUTPUT_PATH,
         publicPath: "/assets/",
-        filename: '[name].js',
+        filename: "[name].js"
     },
     module: {
-        rules: [{
-            test: /\.js$/,
-            loader: ['react-hot-loader/webpack', 'babel-loader'],
-            exclude: /node_modules/
-        }]
+        rules: [
+            {
+                test: /\.js$/,
+                loader: ["react-hot-loader/webpack", "babel-loader"],
+                exclude: /node_modules/
+            }
+        ]
     },
     plugins: [
         new webpack.DefinePlugin({
-            'process.env': {
-                NODE_ENV: JSON.stringify('development')
+            "process.env": {
+                NODE_ENV: JSON.stringify("development")
             }
         }),
         new webpack.HotModuleReplacementPlugin(),
@@ -35,16 +37,13 @@ module.exports = {
         new webpack.NoEmitOnErrorsPlugin()
     ],
     resolve: {
-        extensions: ['.js'],
+        extensions: [".js"],
         alias: {
-            'react-magnitude': SRC_PATH
+            "react-magnitude": SRC_PATH
         },
-        modules: [
-            EXAMPLES_PATH,
-            'node_modules'
-        ]
+        modules: [EXAMPLES_PATH, "node_modules"]
     },
-    devtool: 'source-map',
+    devtool: "source-map",
     devServer: {
         contentBase: EXAMPLES_PATH,
         port: PORT,
@@ -52,15 +51,15 @@ module.exports = {
         inline: true, // Load the webpack-dev-server client module (--inline).
         hot: true, // Enable hot module loading if the plugin is loaded above (--hot).
         compress: true, // Enable gzip compression of generated files.
-        clientLogLevel: 'none',
+        clientLogLevel: "none",
         watchContentBase: true,
         quiet: true,
         watchOptions: {
-            ignored: /node_modules/,
+            ignored: /node_modules/
         },
         overlay: false,
         historyApiFallback: {
-            disableDotRule: true,
+            disableDotRule: true
         }
     }
 };

@@ -1,9 +1,7 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import Node from "./Node";
 import Anchor from "./Anchor";
 import PropTypes from "prop-types";
-import cn from "classNames";
 import shortid from "shortid";
 
 class Dropdown extends React.Component {
@@ -39,7 +37,7 @@ class Dropdown extends React.Component {
     }
     render() {
         return (
-            <Node ref="el" node="ul" {...this._props}>
+            <Node node="ul" {...this._props}>
                 {this._props.children}
             </Node>
         );
@@ -80,7 +78,8 @@ class DropdownItem extends React.Component {
 }
 
 DropdownItem.propTypes = {
-    children: PropTypes.node
+    children: PropTypes.node,
+    href: PropTypes.string
 };
 
 Dropdown.propTypes = {
@@ -93,7 +92,8 @@ Dropdown.propTypes = {
     belowOrigin: PropTypes.bool,
     alignment: PropTypes.oneOf(["left", "right"]),
     stopPropagation: PropTypes.bool,
-    target: PropTypes.string.isRequired
+    target: PropTypes.string.isRequired,
+    id: PropTypes.string
 };
 
 Dropdown.Item = DropdownItem;

@@ -3,7 +3,7 @@ import React from "react";
 import Column from "./Column";
 import Node from "./Node";
 import PropTypes from "prop-types";
-import cn from "classNames";
+import cn from "classnames";
 
 class File extends Input {
     constructor(props) {
@@ -30,5 +30,11 @@ class File extends Input {
         );
     }
 }
+
+File.propTypes = {
+    placeholder: PropTypes.string,
+    validate: PropTypes.bool,
+    children: PropTypes.node
+};
 
 export default File;

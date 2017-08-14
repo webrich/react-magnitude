@@ -1,8 +1,14 @@
-import React from 'react';
-import Node from './Node';
+import React from "react";
+import Node from "./Node";
+import PropTypes from "prop-types";
 
-export default ({children, ...props}) => (
-    <Node node='blockquote' {...props}>
-        { children }
-    </Node>
-);
+const Blockquote = ({ children, ...props }) =>
+    <Node node="blockquote" {...props}>
+        {children}
+    </Node>;
+
+Blockquote.propTypes = {
+    children: PropTypes.node
+};
+
+export default Blockquote;

@@ -1,9 +1,8 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import Column from "./Column";
 import Node from "./Node";
 import PropTypes from "prop-types";
-import cn from "classNames";
+import cn from "classnames";
 
 class Input extends React.Component {
     constructor(props) {
@@ -18,7 +17,6 @@ class Input extends React.Component {
             inline = false,
             validate = false,
             active = false,
-            autoresize = false,
             error,
             success,
             className,
@@ -56,9 +54,9 @@ class Input extends React.Component {
             className: cn(className, {
                 validate: validate
             }),
-            type,
             ...remainingProps
         };
+        this.type = type;
     }
 
     render() {
@@ -66,7 +64,7 @@ class Input extends React.Component {
         return (
             <N className={this.wrapperClassName} {...this.wrapper_props}>
                 {this.wrapper_props.children}
-                <input ref="el" {...this.input_props} />
+                <input ref={ref => (this.el = ref)} type={this.type} {...this.input_props} />
                 <label {...this.label_props}>
                     {this.label_props.children}
                 </label>
@@ -76,9 +74,27 @@ class Input extends React.Component {
 
     componentDidMount() {
         if (typeof $ !== "undefined" && $.fn.characterCounter && this.input_props["data-length"]) {
-            $(ReactDOM.findDOMNode(this.refs.el)).characterCounter();
+            $(this.el).characterCounter();
         }
     }
 }
+
+Input.propTypes = {
+    push: PropTypes.string,
+    pull: PropTypes.string,
+    offset: PropTypes.string,
+    size: PropTypes.string,
+    label: PropTypes.string,
+    type: PropTypes.string,
+    inline: PropTypes.bool,
+    validate: PropTypes.bool,
+    active: PropTypes.bool,
+    error: PropTypes.string,
+    success: PropTypes.string,
+    className: PropTypes.string,
+    children: PropTypes.node,
+    id: PropTypes.string,
+    name: PropTypes.string
+};
 
 export default Input;

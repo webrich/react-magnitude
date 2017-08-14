@@ -1,6 +1,14 @@
-import React from 'react';
-import Node from './Node';
+import React from "react";
+import Node from "./Node";
+import PropTypes from "prop-types";
 
-export default ({children, ...props}) => <Node node='p' {...props}>
-                                             { children }
-                                         </Node>;
+const Paragraph = ({ children, ...props }) =>
+    <Node node="p" {...props}>
+        {children}
+    </Node>;
+
+Paragraph.propTypes = {
+    children: PropTypes.node
+};
+
+export default Paragraph;

@@ -1,10 +1,8 @@
 import Input from "./Input";
 import React from "react";
-import ReactDOM from "react-dom";
 import Column from "./Column";
 import Node from "./Node";
-import PropTypes from "prop-types";
-import cn from "classNames";
+import cn from "classnames";
 
 class Textarea extends Input {
     constructor(props) {
@@ -22,7 +20,7 @@ class Textarea extends Input {
         return (
             <N className={this.wrapperClassName} {...this.wrapper_props}>
                 {this.wrapper_props.children}
-                <textarea ref="el" {...this.textarea_props} />
+                <textarea ref={ref => (this.el = ref)} {...this.textarea_props} />
                 <label {...this.label_props}>
                     {this.label_props.children}
                 </label>
@@ -33,7 +31,7 @@ class Textarea extends Input {
     componentDidMount() {
         super.componentDidMount();
         if (typeof $ !== "undefined" && this.autoresize) {
-            $(ReactDOM.findDOMNode(this.refs.el)).trigger("autoresize");
+            $(this.el).trigger("autoresize");
         }
     }
 }

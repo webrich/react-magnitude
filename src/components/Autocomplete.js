@@ -1,10 +1,8 @@
 import Input from "./Input";
 import React from "react";
-import ReactDOM from "react-dom";
 import Column from "./Column";
 import Node from "./Node";
 import PropTypes from "prop-types";
-import cn from "classNames";
 
 class Autocomplete extends Input {
     constructor(props) {
@@ -19,7 +17,7 @@ class Autocomplete extends Input {
         return (
             <N className={this.wrapperClassName} {...this.wrapper_props}>
                 {this.wrapper_props.children}
-                <input ref="el" {...this.autocomplete_props} autoComplete="off" />
+                <input type="text" ref={ref => (this.input = ref)} {...this.autocomplete_props} autoComplete="off" />
                 <label {...this.label_props}>
                     {this.label_props.children}
                 </label>
@@ -28,10 +26,16 @@ class Autocomplete extends Input {
     }
 
     componentDidMount() {
-        if (typeof $ !== "undefined" && $.fn.autocomplete) {
-            $(ReactDOM.findDOMNode(this.refs.el)).autocomplete(this.options);
-        }
+        $(document).ready(() => {
+            if ($.fn.autocomplete) {
+                $(this.input).autocomplete(this.options);
+            }
+        });
     }
 }
+
+Autocomplete.propTypes = {
+    options: PropTypes.object
+};
 
 export default Autocomplete;

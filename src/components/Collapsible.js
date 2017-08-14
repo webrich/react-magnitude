@@ -1,15 +1,14 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import Node from './Node';
-import PropTypes from 'prop-types';
-import cn from 'classNames';
+import React from "react";
+import Node from "./Node";
+import PropTypes from "prop-types";
+import cn from "classnames";
 
 class Collapsible extends React.Component {
     constructor(props) {
         super(props);
-        let {className, onOpen, onClose, popout=false, expandable=false, ...remainingProps} = props;
-        this.className = cn('collapsible', className, {
-            'popout': popout
+        let { className, onOpen, onClose, popout = false, expandable = false, ...remainingProps } = props;
+        this.className = cn("collapsible", className, {
+            popout: popout
         });
         this.expandable = expandable;
         this.onOpen = onOpen;
@@ -17,8 +16,8 @@ class Collapsible extends React.Component {
         this._props = remainingProps;
     }
     componentDidMount() {
-        if (typeof $ !== 'undefined') {
-            $(ReactDOM.findDOMNode(this.refs.el)).collapsible({
+        if (typeof $ !== "undefined" && $.fn.collapsible) {
+            $(this.collapsible.el).collapsible({
                 accordion: !this.expandable,
                 onOpen: this.onOpen,
                 onClose: this.onClose
@@ -27,12 +26,27 @@ class Collapsible extends React.Component {
     }
     render() {
         return (
-            <Node ref='el' node='ul' data-collapsible={ this.expandable ? 'expandable' : 'accordion' } className={ this.className } {...this._props}>
-                { this._props.children }
+            <Node
+                ref={ref => (this.collapsible = ref)}
+                node="ul"
+                data-collapsible={this.expandable ? "expandable" : "accordion"}
+                className={this.className}
+                {...this._props}
+            >
+                {this._props.children}
             </Node>
-            );
+        );
     }
 }
+
+Collapsible.propTypes = {
+    popout: PropTypes.bool,
+    expandable: PropTypes.bool,
+    onOpen: PropTypes.func,
+    onClose: PropTypes.func,
+    children: PropTypes.node.isRequired,
+    className: PropTypes.string
+};
 
 class CollapsibleItem extends React.Component {
     constructor(props) {
@@ -40,30 +54,40 @@ class CollapsibleItem extends React.Component {
     }
     render() {
         return (
-            <Node node='li' {...this.props}>
-                { this.props.children }
+            <Node node="li" {...this.props}>
+                {this.props.children}
             </Node>
-            );
+        );
     }
 }
+
+CollapsibleItem.propTypes = {
+    children: PropTypes.node.isRequired
+};
 
 class CollapsibleHeader extends React.Component {
     constructor(props) {
         super(props);
-        let {className, active=false, ...remainingProps} = props;
-        this.className = cn('collapsible-header', className, {
-            'active': active
+        let { className, active = false, ...remainingProps } = props;
+        this.className = cn("collapsible-header", className, {
+            active: active
         });
         this._props = remainingProps;
     }
     render() {
         return (
-            <Node className={ this.className } {...this._props}>
-                { this._props.children }
+            <Node className={this.className} {...this._props}>
+                {this._props.children}
             </Node>
-            );
+        );
     }
 }
+
+CollapsibleHeader.propTypes = {
+    active: PropTypes.bool,
+    className: PropTypes.string,
+    children: PropTypes.node
+};
 
 class CollapsibleBody extends React.Component {
     constructor(props) {
@@ -71,28 +95,17 @@ class CollapsibleBody extends React.Component {
     }
     render() {
         return (
-            <Node className={ cn('collapsible-body', this.props.className) } {...this.props}>
-                { this.props.children }
+            <Node className={cn("collapsible-body", this.props.className)} {...this.props}>
+                {this.props.children}
             </Node>
-            );
+        );
     }
 }
 
-CollapsibleHeader.propTypes = {
-    active: PropTypes.bool
+CollapsibleBody.propTypes = {
+    className: PropTypes.string,
+    children: PropTypes.node
 };
-
-CollapsibleItem.propTypes = {
-    children: PropTypes.node.isRequired
-};
-
-Collapsible.propTypes = {
-    popout: PropTypes.bool,
-    expandable: PropTypes.bool,
-    onOpen: PropTypes.func,
-    onClose: PropTypes.func,
-    children: PropTypes.node.isRequired
-}
 
 Collapsible.Item = CollapsibleItem;
 Collapsible.Header = CollapsibleHeader;

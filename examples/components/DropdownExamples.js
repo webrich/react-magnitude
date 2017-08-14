@@ -1,6 +1,6 @@
 import React from "react";
 import Example from "./Example";
-import { Container, Row, Column, Section, Heading, Button, Dropdown, Icon } from "react-magnitude";
+import { Section, Button, Dropdown, Icon } from "react-magnitude";
 
 export default () =>
     <Example title="Dropdown">

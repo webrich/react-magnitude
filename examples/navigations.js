@@ -1,4 +1,3 @@
-import React from "react";
 import Home from "./components/Home";
 import GridExamples from "./components/GridExamples";
 import CollectionExamples from "./components/CollectionExamples";

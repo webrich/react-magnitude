@@ -1,7 +1,16 @@
-import React from 'react';
-import Anchor from './Anchor';
-import cn from 'classNames';
+import React from "react";
+import Anchor from "./Anchor";
+import cn from "classnames";
+import PropTypes from "prop-types";
 
-export default ({children, className, ...props}) => <Anchor className={ cn('breadcrumb', className).trim() } {...props}>
-                                                        { children }
-                                                    </Anchor>;
+const Breadcrumb = ({ children, className, ...props }) =>
+    <Anchor className={cn("breadcrumb", className).trim()} {...props}>
+        {children}
+    </Anchor>;
+
+Breadcrumb.propTypes = {
+    className: PropTypes.string,
+    children: PropTypes.node
+};
+
+export default Breadcrumb;

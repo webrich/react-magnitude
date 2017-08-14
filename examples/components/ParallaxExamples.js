@@ -1,6 +1,6 @@
 import React from "react";
 import Example from "./Example";
-import { Container, Row, Column, Section, Heading, Button, Parallax, Modal, Image, Paragraph } from "react-magnitude";
+import { Container, Row, Section, Heading, Parallax, Image, Paragraph } from "react-magnitude";
 
 export default () =>
     <Example title="Parallax" container={false}>

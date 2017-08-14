@@ -1,7 +1,6 @@
 import React from "react";
 import Node from "./Node";
 import PropTypes from "prop-types";
-import cn from "classNames";
 import Icon from "./Icon";
 import Image from "./Image";
 

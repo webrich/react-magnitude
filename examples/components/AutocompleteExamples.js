@@ -1,6 +1,6 @@
 import React from "react";
 import Example from "./Example";
-import { Container, Row, Column, Section, Heading, Autocomplete, Icon } from "react-magnitude";
+import { Row, Section, Heading, Autocomplete, Icon } from "react-magnitude";
 
 export default () =>
     <Example title="Forms">
@@ -22,8 +22,9 @@ export default () =>
                                 Google: "https://placehold.it/250x250"
                             },
                             limit: 20, // The max amount of results that can be shown at once. Default: Infinity.
-                            onAutocomplete: function(val) {
+                            onAutocomplete: val => {
                                 // Callback function when value is autcompleted.
+                                console.log(val);
                             },
                             minLength: 1 // The minimum length of the input for the autocomplete to start. Default: 1.
                         }}

@@ -1,6 +1,6 @@
 import React from "react";
 import Example from "./Example";
-import { Container, Row, Column, Section, Heading, Divider, Card, Paragraph, Anchor, Image, Button, Icon } from "react-magnitude";
+import { Row, Column, Section, Heading, Divider, Card, Paragraph, Anchor, Image, Button, Icon } from "react-magnitude";
 
 export default () =>
     <Example title="Cards">

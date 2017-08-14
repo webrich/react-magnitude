@@ -1,14 +1,13 @@
 import Input from "./Input";
 import React from "react";
 import Column from "./Column";
-import Node from "./Node";
 import PropTypes from "prop-types";
-import cn from "classNames";
+import cn from "classnames";
 
 class Radio extends Input {
     constructor(props) {
         super(props);
-        let { withgap = false, type, checked = false, className, ...remainingProps } = this.input_props;
+        let { withgap = false, checked = false, className, ...remainingProps } = this.input_props;
         this.radio_props = {
             type: "radio",
             className: cn(className, {
@@ -31,5 +30,10 @@ class Radio extends Input {
         );
     }
 }
+Radio.propTypes = {
+    withgap: PropTypes.bool,
+    checked: PropTypes.bool,
+    className: PropTypes.string
+};
 
 export default Radio;

@@ -1,6 +1,6 @@
 import React from "react";
 import Example from "./Example";
-import { Container, Row, Column, Section, Heading, Radio } from "react-magnitude";
+import { Row, Section, Heading, Radio } from "react-magnitude";
 
 export default () =>
     <Example title="Forms">

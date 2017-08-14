@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Node, Heading, Container, Row, Column } from "react-magnitude";
 
 const Example = ({ title, container = true, children }) =>
@@ -20,5 +21,11 @@ const Example = ({ title, container = true, children }) =>
                   {children}
               </Node>}
     </Node>;
+
+Example.propTypes = {
+    title: PropTypes.string,
+    container: PropTypes.bool,
+    children: PropTypes.node
+};
 
 export default Example;

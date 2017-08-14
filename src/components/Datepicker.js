@@ -1,10 +1,8 @@
 import Input from "./Input";
 import React from "react";
-import ReactDOM from "react-dom";
 import Column from "./Column";
 import Node from "./Node";
 import PropTypes from "prop-types";
-import cn from "classNames";
 
 class Datepicker extends Input {
     constructor(props) {
@@ -19,7 +17,7 @@ class Datepicker extends Input {
         return (
             <N className={this.wrapperClassName} {...this.wrapper_props}>
                 {this.wrapper_props.children}
-                <input ref="el" {...this.datepicker_props} />
+                <input ref={ref => (this.input = ref)} {...this.datepicker_props} type="text" />
                 <label {...this.label_props}>
                     {this.label_props.children}
                 </label>
@@ -29,9 +27,13 @@ class Datepicker extends Input {
 
     componentDidMount() {
         if (typeof $ !== "undefined" && $.fn.pickadate) {
-            $(ReactDOM.findDOMNode(this.refs.el)).pickadate(this.options);
+            $(this.input).pickadate(this.options);
         }
     }
 }
+
+Datepicker.propTypes = {
+    options: PropTypes.object
+};
 
 export default Datepicker;

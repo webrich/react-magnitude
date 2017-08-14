@@ -1,7 +1,5 @@
 import React from "react";
 import Node from "./Node";
-import PropTypes from "prop-types";
-import cn from "classNames";
 
 class Image extends React.Component {
     constructor(props) {
@@ -9,7 +7,7 @@ class Image extends React.Component {
         this._props = props;
     }
     render() {
-        return <Node ref="el" node="img" {...this._props} />;
+        return <Node ref={ref => (this.component = ref)} node="img" {...this._props} />;
     }
 }
 

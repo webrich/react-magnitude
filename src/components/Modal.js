@@ -1,9 +1,7 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import Node from "./Node";
-import Anchor from "./Anchor";
 import PropTypes from "prop-types";
-import cn from "classNames";
+import cn from "classnames";
 import shortid from "shortid";
 
 class Modal extends React.Component {
@@ -46,7 +44,7 @@ class Modal extends React.Component {
     }
     render() {
         return (
-            <Node ref="el" {...this._props}>
+            <Node ref={ref => (this.modal = ref)} {...this._props}>
                 {this._props.children}
             </Node>
         );
@@ -55,7 +53,7 @@ class Modal extends React.Component {
         $(document).ready(() => {
             if (typeof $ !== "undefined" && $.fn.modal) {
                 $(this.target).attr("data-target", this._props.id);
-                $(ReactDOM.findDOMNode(this.refs.el)).modal(this.options);
+                $(this.modal.el).modal(this.options);
             }
         });
     }
@@ -93,6 +91,16 @@ class ModalFooter extends React.Component {
     }
 }
 
+ModalContent.propTypes = {
+    className: PropTypes.string,
+    children: PropTypes.node
+};
+
+ModalFooter.propTypes = {
+    className: PropTypes.string,
+    children: PropTypes.node
+};
+
 Modal.propTypes = {
     children: PropTypes.node.isRequired,
     inDuration: PropTypes.number,
@@ -102,7 +110,11 @@ Modal.propTypes = {
     startingTop: PropTypes.number,
     endingTop: PropTypes.number,
     ready: PropTypes.func,
-    complete: PropTypes.func
+    complete: PropTypes.func,
+    fixedFooter: PropTypes.bool,
+    bottomSheet: PropTypes.bool,
+    id: PropTypes.string,
+    target: PropTypes.string
 };
 
 Modal.Content = ModalContent;

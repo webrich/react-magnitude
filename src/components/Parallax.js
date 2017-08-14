@@ -1,8 +1,6 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import Node from "./Node";
 import PropTypes from "prop-types";
-import cn from "classNames";
 
 class Parallax extends React.Component {
     constructor(props) {
@@ -15,7 +13,7 @@ class Parallax extends React.Component {
     render() {
         return (
             <Node className="parallax-container" style={{ height: this.height + "px" }}>
-                <Node ref="el" className="parallax">
+                <Node ref={ref => (this.parallax = ref)} className="parallax">
                     {this._props.children}
                 </Node>
             </Node>
@@ -24,7 +22,7 @@ class Parallax extends React.Component {
 
     componentDidMount() {
         if (typeof $ !== "undefined" && $.fn.parallax) {
-            $(ReactDOM.findDOMNode(this.refs.el)).parallax();
+            $(this.parallax.el).parallax();
         }
     }
 }

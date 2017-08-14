@@ -1,10 +1,7 @@
 import Input from "./Input";
 import React from "react";
-import ReactDOM from "react-dom";
 import Column from "./Column";
 import Node from "./Node";
-import PropTypes from "prop-types";
-import cn from "classNames";
 
 class Timepicker extends Input {
     constructor(props) {
@@ -19,7 +16,7 @@ class Timepicker extends Input {
         return (
             <N className={this.wrapperClassName} {...this.wrapper_props}>
                 {this.wrapper_props.children}
-                <input ref="el" {...this.timepicker_props} />
+                <input ref={ref => (this.input = ref)} {...this.timepicker_props} type="text" />
                 <label {...this.label_props}>
                     {this.label_props.children}
                 </label>
@@ -29,7 +26,7 @@ class Timepicker extends Input {
 
     componentDidMount() {
         if (typeof $ !== "undefined" && $.fn.pickatime) {
-            $(ReactDOM.findDOMNode(this.refs.el)).pickatime(this.options);
+            $(this.input).pickatime(this.options);
         }
     }
 }

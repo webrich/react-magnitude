@@ -1,6 +1,6 @@
 import React from "react";
 import Example from "./Example";
-import { Container, Row, Column, Section, Heading, Button, Image, Carousel, Paragraph } from "react-magnitude";
+import { Section, Heading, Button, Image, Carousel, Paragraph } from "react-magnitude";
 
 export default () =>
     <Example title="Carousel">

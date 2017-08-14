@@ -1,14 +1,13 @@
 import Input from "./Input";
 import React from "react";
 import Column from "./Column";
-import Node from "./Node";
 import PropTypes from "prop-types";
-import cn from "classNames";
+import cn from "classnames";
 
 class Checkbox extends Input {
     constructor(props) {
         super(props);
-        let { filled = false, type, checked = false, className, ...remainingProps } = this.input_props;
+        let { filled = false, checked = false, className, ...remainingProps } = this.input_props;
         this.checkbox_props = {
             type: "checkbox",
             className: cn(className, {
@@ -31,5 +30,12 @@ class Checkbox extends Input {
         );
     }
 }
+
+Checkbox.propTypes = {
+    filled: PropTypes.bool,
+    checked: PropTypes.bool,
+    className: PropTypes.string,
+    children: PropTypes.node
+};
 
 export default Checkbox;

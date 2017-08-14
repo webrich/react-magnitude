@@ -1,8 +1,7 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import Node from "./Node";
 import PropTypes from "prop-types";
-import cn from "classNames";
+import cn from "classnames";
 
 class Caption extends React.Component {
     constructor(props) {
@@ -27,7 +26,8 @@ class Caption extends React.Component {
 
 Caption.propTypes = {
     children: PropTypes.node.isRequired,
-    align: PropTypes.oneOf(["left", "center", "right"])
+    align: PropTypes.oneOf(["left", "center", "right"]),
+    className: PropTypes.string
 };
 
 export default Caption;

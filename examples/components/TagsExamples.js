@@ -1,6 +1,6 @@
 import React from "react";
 import Example from "./Example";
-import { Container, Row, Column, Section, Heading, Tags, Tag } from "react-magnitude";
+import { Section, Heading, Tags, Tag } from "react-magnitude";
 
 export default () =>
     <Example title="Tags">

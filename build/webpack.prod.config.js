@@ -1,23 +1,40 @@
-const webpack = require('webpack');
-const path = require('path');
+const webpack = require("webpack");
+const path = require("path");
 
 const ROOT_PATH = path.resolve(__dirname);
-const SRC_PATH = path.resolve(ROOT_PATH, '../src');
-const OUTPUT_PATH = path.resolve(ROOT_PATH, '../dist');
-const PORT = 3000;
+const SRC_PATH = path.resolve(ROOT_PATH, "../src");
+const OUTPUT_PATH = path.resolve(ROOT_PATH, "../dist");
 
-return {
+module.exports = {
     entry: {
-        'react-magnitude': path.resolve(SRC_PATH, 'index.js')
+        "react-magnitude": path.resolve(SRC_PATH, "index.js")
     },
     output: {
         path: OUTPUT_PATH,
-        filename: '[name].min.js',
+        filename: "[name].min.js"
+    },
+    externals: {
+        classnames: "classNames",
+        classNames: "classNames",
+        "prop-types": "PropTypes",
+        react: "React",
+        "react-dom": "ReactDOM",
+        "react-router-dom": "react-router-dom",
+        shortid: "shortid"
+    },
+    module: {
+        rules: [
+            {
+                test: /\.js$/,
+                loader: ["react-hot-loader/webpack", "babel-loader"],
+                exclude: /node_modules/
+            }
+        ]
     },
     plugins: [
         new webpack.DefinePlugin({
-            'process.env': {
-                NODE_ENV: JSON.stringify('production')
+            "process.env": {
+                NODE_ENV: JSON.stringify("production")
             }
         }),
         new webpack.LoaderOptionsPlugin({
@@ -37,10 +54,7 @@ return {
         })
     ],
     resolve: {
-        extensions: ['.js'],
-        modules: [
-            SRC_PATH,
-            'node_modules'
-        ]
+        extensions: [".js"],
+        modules: [SRC_PATH, "node_modules"]
     }
 };

@@ -1,8 +1,7 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import Node from "./Node";
 import PropTypes from "prop-types";
-import cn from "classNames";
+import cn from "classnames";
 
 class Slider extends React.Component {
     constructor(props) {
@@ -20,7 +19,7 @@ class Slider extends React.Component {
 
     render() {
         return (
-            <Node ref="el" className={this.className} {...this._props}>
+            <Node ref={ref => (this.slider = ref)} className={this.className} {...this._props}>
                 <Node node="ul" className="slides">
                     {this._props.children}
                 </Node>
@@ -30,12 +29,13 @@ class Slider extends React.Component {
 
     componentDidMount() {
         if (typeof $ !== "undefined" && $.fn.slider) {
-            $(ReactDOM.findDOMNode(this.refs.el)).slider(this.options);
+            $(this.slider.el).slider(this.options);
         }
     }
 }
 
 Slider.propTypes = {
+    className: PropTypes.string,
     children: PropTypes.node,
     fullscreen: PropTypes.bool,
     indicators: PropTypes.bool,

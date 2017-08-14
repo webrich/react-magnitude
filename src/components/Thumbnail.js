@@ -1,8 +1,5 @@
-import React from "react";
 import Image from "./Image";
-import PropTypes from "prop-types";
-import cn from "classNames";
-import ReactDOM from "react-dom";
+import cn from "classnames";
 
 class Thumbnail extends Image {
     constructor(props) {
@@ -17,7 +14,7 @@ class Thumbnail extends Image {
     }
     componentDidMount() {
         if (typeof $ !== "undefined" && $.fn.materialbox) {
-            $(ReactDOM.findDOMNode(this.refs.el)).materialbox();
+            $(this.component.el).materialbox();
         }
     }
 }

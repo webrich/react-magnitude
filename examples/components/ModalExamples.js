@@ -1,6 +1,6 @@
 import React from "react";
 import Example from "./Example";
-import { Container, Row, Column, Section, Heading, Button, Paragraph, Modal, Icon } from "react-magnitude";
+import { Section, Heading, Button, Paragraph, Modal } from "react-magnitude";
 
 export default () =>
     <Example title="Modals">
@@ -24,10 +24,10 @@ export default () =>
                 outDuration={200}
                 startingTop={4}
                 endingTop={10}
-                ready={function(modal, trigger) {
+                ready={() => {
                     console.log("ready");
                 }}
-                complete={function() {
+                complete={() => {
                     console.log("closed");
                 }}
             >
@@ -58,10 +58,10 @@ export default () =>
                 startingTop={4}
                 endingTop={10}
                 fixedFooter
-                ready={function(modal, trigger) {
+                ready={() => {
                     console.log("ready");
                 }}
-                complete={function() {
+                complete={() => {
                     console.log("closed");
                 }}
             >
@@ -116,10 +116,10 @@ export default () =>
                 startingTop={4}
                 endingTop={10}
                 bottomSheet
-                ready={function(modal, trigger) {
+                ready={() => {
                     console.log("ready");
                 }}
-                complete={function() {
+                complete={() => {
                     console.log("closed");
                 }}
             >

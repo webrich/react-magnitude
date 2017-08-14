@@ -1,6 +1,6 @@
 import React from "react";
 import Example from "./Example";
-import { Container, Row, Column, Section, Heading, Thumbnail, Slider, Slide, Caption, Image } from "react-magnitude";
+import { Row, Column, Section, Heading, Thumbnail, Slider, Slide, Caption, Image } from "react-magnitude";
 
 export default () =>
     <Example title="Media">
@@ -27,7 +27,7 @@ export default () =>
                     <Caption align="center">
                         <Heading weight="3">This is our big Tagline!</Heading>
                         <Heading weight="5" className="light grey-text text-lighten-3">
-                            Here's our small slogan.
+                            Here is our small slogan.
                         </Heading>
                     </Caption>
                 </Slide>
@@ -36,7 +36,7 @@ export default () =>
                     <Caption align="left">
                         <Heading weight="3">This is our big Tagline!</Heading>
                         <Heading weight="5" className="light grey-text text-lighten-3">
-                            Here's our small slogan.
+                            Here is our small slogan.
                         </Heading>
                     </Caption>
                 </Slide>
@@ -45,7 +45,7 @@ export default () =>
                     <Caption align="right">
                         <Heading weight="3">This is our big Tagline!</Heading>
                         <Heading weight="5" className="light grey-text text-lighten-3">
-                            Here's our small slogan.
+                            Here is our small slogan.
                         </Heading>
                     </Caption>
                 </Slide>
@@ -54,7 +54,7 @@ export default () =>
                     <Caption align="center">
                         <Heading weight="3">This is our big Tagline!</Heading>
                         <Heading weight="5" className="light grey-text text-lighten-3">
-                            Here's our small slogan.
+                            Here is our small slogan.
                         </Heading>
                     </Caption>
                 </Slide>

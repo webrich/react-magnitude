@@ -1,16 +1,13 @@
 import Input from "./Input";
 import React from "react";
-import ReactDOM from "react-dom";
 import Column from "./Column";
 import Node from "./Node";
-import PropTypes from "prop-types";
-import cn from "classNames";
 
 class Select extends Input {
     constructor(props) {
         super(props);
         this.wrapperClassName = "input-field";
-        let { type, className, ...remainingProps } = this.input_props;
+        let { className, ...remainingProps } = this.input_props;
         this.select_props = remainingProps;
         this.className = className;
     }
@@ -20,7 +17,7 @@ class Select extends Input {
         if (this.className.indexOf("browser-default") === -1) {
             return (
                 <N className={this.wrapperClassName} {...this.wrapper_props}>
-                    <select ref="el" {...this.select_props} className={this.className}>
+                    <select ref={ref => (this.el = ref)} {...this.select_props} className={this.className}>
                         {this.wrapper_props.children}
                     </select>
                     <label {...this.label_props}>
@@ -44,13 +41,13 @@ class Select extends Input {
 
     componentWillUnmount() {
         if (typeof $ !== "undefined" && $.fn.material_select) {
-            $(ReactDOM.findDOMNode(this.refs.el)).material_select("destroy");
+            $(this.el).material_select("destroy");
         }
     }
 
     componentDidMount() {
         if (typeof $ !== "undefined" && $.fn.material_select) {
-            $(ReactDOM.findDOMNode(this.refs.el)).material_select();
+            $(this.el).material_select();
         }
     }
 }

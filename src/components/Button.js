@@ -1,14 +1,13 @@
 import React from "react";
 import Node from "./Node";
-import * as Utils from "./Utils";
 import PropTypes from "prop-types";
-import classNames from "classNames";
+import cn from "classnames";
 
 class Button extends React.Component {
     constructor(props) {
         super(props);
         let { floating = false, pulse = false, flat = false, disabled = false, size, className, ...remainingProps } = props;
-        this.className = classNames(className, {
+        this.className = cn(className, {
             btn: !flat,
             disabled: disabled,
             "btn-floating": floating,
@@ -29,6 +28,9 @@ class Button extends React.Component {
 }
 
 Button.propTypes = {
+    floating: PropTypes.bool,
+    flat: PropTypes.bool,
+    className: PropTypes.string,
     disabled: PropTypes.bool,
     pulse: PropTypes.bool,
     size: PropTypes.oneOf(["large"]),
